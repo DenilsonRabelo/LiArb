@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres
+    container_name: LiArb
+    restart: always
+    environment:
+      POSTGRES_USER: liarb
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: liarb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:

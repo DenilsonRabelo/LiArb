@@ -1,0 +1,18 @@
+{
+  "name": "LiArb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Denilson Rabelo <denilsonrabelo.dev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:client": "cd Client && yarn dev",
+    "start:server": "cd Server && yarn start:dev",
+    "add:client": "cd Client && yarn",
+    "add:server": "cd Server && yarn",
+    "add:dep": "yarn add:client && yarn add:server",
+    "start": "concurrently \"yarn start:client\" \"yarn start:server\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

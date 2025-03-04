@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Adicionado */
+}
+
+:root {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    max-width: 100vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden; /* Adicionado */
+}
