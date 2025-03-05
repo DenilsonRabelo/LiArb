@@ -10,6 +10,7 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { Box } from '@mui/material';
 import ResponsiveGrid from '../../src/pages/Blog/index';
 import logo from '../assets/logo.png';
+import MembersPage from '../pages/Members/MembersPage';
 
 
 const NAVIGATION: Navigation = [
@@ -77,6 +78,8 @@ export default function DashboardLayoutBasic(props: any) {
     switch (path) {
       case '/liArb-academy':
         return <ResponsiveGrid/>;
+        case '/estrutura':
+          return <MembersPage/>
     }
   };
 
