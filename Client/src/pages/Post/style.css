@@ -1,0 +1,27 @@
+.titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+
+.texto {
+    margin-bottom: 1rem;
+    color: black !important;
+}
+
+.chip {
+    align-items: center;
+    margin-bottom: 0;
+    border-color: #722E8E !important;
+    box-shadow: #722E8E !important;
+    
+}
+
+.autor {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+}

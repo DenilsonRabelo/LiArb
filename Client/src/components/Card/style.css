@@ -4,4 +4,18 @@
     background-color: #722E8E;
     cursor: pointer;
     scale: 1.05;
+    color: white!important;
+}
+
+.card:hover .MuiTypography-root {
+    color: white !important;
+}
+.card:hover .MuiTypography-root:first-of-type,
+.card:hover .MuiTypography-root:first-of-type a {
+    color: inherit !important;
+}
+
+.buttonReadMore:hover{
+    background-color: #722E8E;
+    color: white;
 }
