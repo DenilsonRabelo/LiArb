@@ -7,9 +7,10 @@ import { usuarioModule } from './usuario/usuario.module';
 import { APP_GUARD } from '@nestjs/core';
 import { postModule } from './post/post.module';
 import { AppService } from './app.service';
+import { MembroModule } from './membro/membro.module';
 
 @Module({
-  imports: [usuarioModule, AuthModule, postModule],
+  imports: [usuarioModule, AuthModule, postModule, MembroModule],
   controllers: [AppController],
   providers: [PrismaService, AppService],
 })
