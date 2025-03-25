@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import './style.css';
 import { Container } from '@mui/material';
+import { enqueueSnackbar } from 'notistack';
 
 const providers = [{ id: 'credentials', name: 'Email e senha' }];
 
@@ -31,6 +32,7 @@ export default function Login() {
           const result = await loginService(email, password);
       
           if (result.success) {
+            enqueueSnackbar("Login realizado com sucesso!", { variant: "success" });
             navigate('/pagina-destino');
             return { success: 'true' };
           } else {
