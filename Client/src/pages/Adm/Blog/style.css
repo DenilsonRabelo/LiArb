@@ -1,0 +1,32 @@
+.button:hover{
+    background-color: #722E8E;
+    color: white;
+}
+
+.button2 {
+    color: white !important;
+}
+
+.chip{
+    background-color: #722E8E !important;
+    color: white;
+    border-color: #722E8E !important;
+    background: #722E8E !important;
+}
+
+.bn-editor {
+    min-height: 200px;
+}
+
+.input .MuiOutlinedInput-root:hover fieldset {
+    border-color: #722E8E;
+}
+
+.input .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #722E8E;
+}
+
+.input .MuiInputLabel-root.Mui-focused {
+    color: #722E8E;
+}
+

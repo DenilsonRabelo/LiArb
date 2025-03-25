@@ -4,7 +4,7 @@
     background-color: #722E8E;
     cursor: pointer;
     scale: 1.05;
-    color: white!important;
+    color: white !important;
 }
 
 .card:hover .MuiTypography-root {

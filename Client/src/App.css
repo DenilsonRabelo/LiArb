@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Adicionado */
+    overflow-x: hidden;
 }
 
 :root {
@@ -16,5 +16,5 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden; /* Adicionado */
+    overflow-x: hidden; 
 }

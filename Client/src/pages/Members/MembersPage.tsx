@@ -16,6 +16,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import membroFoto from '../../assets/membro.jpg';
+import { ReactTyped } from 'react-typed';
 
 interface Membro {
   id: number;

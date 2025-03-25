@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box, Divider } from '@mui/material';
+import { ReactTyped } from 'react-typed';
 
 interface PageTitleProps {
   title: string;
@@ -18,7 +19,12 @@ const PageTitle: React.FC<PageTitleProps> = ({ title, content }) => {
         alignItems: 'center',
       }}>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
-          {title}
+          <ReactTyped
+            strings={[title]}
+            typeSpeed={50}
+            backSpeed={30}
+            loop={true}
+          />
         </Typography>
         {content && (
           <Typography variant="body1" sx={{ ml: 2 }} style={{ marginTop: 10 }}>

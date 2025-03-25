@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import './style.css';
-import { Link } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import { data } from 'react-router-dom';
 import { Publish } from '@mui/icons-material';
 
@@ -18,6 +18,7 @@ interface BlogCardProps {
   published: string;
   tags: string[];
   onReadMore: () => void;
+  children?: React.ReactNode;
 }
 
 function truncateText(str: string, num: number) {
@@ -34,7 +35,13 @@ function parseDateTo(date: string) {
   return `${day}/${month}/${year}`;
 }
 
-function BlogCard({ title, content, imageUrl, author, published, tags, onReadMore }: BlogCardProps) {
+function stripTags(html: string): string {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || '';
+}
+
+
+function BlogCard({ title, content, imageUrl, author, published, tags, onReadMore, children }: BlogCardProps) {
   return (
     <Card
       className="card"
@@ -62,11 +69,12 @@ function BlogCard({ title, content, imageUrl, author, published, tags, onReadMor
         <Typography variant="subtitle2" color="text.secondary">
           Publicado em: {parseDateTo(published)}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
-          {truncateText(content, 100)} {}
+        <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1, whiteSpace: 'pre-line', wordBreak: 'break-word' }}>
+          {truncateText(stripTags(content), 100)}
         </Typography>
       </CardContent>
-      <CardActions sx={{ alignSelf: 'center' }} style={{ width: '100%' }}>
+      <CardActions sx={{ alignSelf: 'center' }} style={{ width: '100%', justifyContent: 'space-between'}}>
+
         <Button
           className="buttonReadMore"
           size="medium"
@@ -75,6 +83,12 @@ function BlogCard({ title, content, imageUrl, author, published, tags, onReadMor
         >
           Ler Mais
         </Button>
+
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          {children}
+        </Box>
+
+
       </CardActions>
     </Card>
   );

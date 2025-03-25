@@ -7,6 +7,11 @@ import DashboardLayoutBasic from './Layout';
 import Blog from './pages/Blog';
 import MembersPage from './pages/Members/MembersPage';
 import PostPage from './pages/Post';
+import login from './pages/Login/inde';
+import Home from './pages/Home';
+import BlogAdminPage from './pages/Adm/Blog';
+import BlogAdminCreatPost from './pages/Adm/Blog/createPost';
+import { SnackbarProvider } from "notistack";
 const router = createBrowserRouter([
   {
     Component: App,
@@ -27,6 +32,22 @@ const router = createBrowserRouter([
             path: '/liArb-academy/post/:id',
             Component: PostPage,
           },
+          {
+            path: '/login',
+            Component: login,
+          },
+          {
+            path: '/home',
+            Component: Home,
+          },
+          {
+            path: '/administrar-blog',
+            Component: BlogAdminPage,
+          },
+          {
+            path: '/adm/blog/cadastrar',
+            Component: BlogAdminCreatPost,
+          }
         ],
       },
     ],
@@ -35,6 +56,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SnackbarProvider
+      maxSnack={3} 
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+    >
+      <RouterProvider router={router} />
+    </SnackbarProvider>
   </React.StrictMode>,
 );
