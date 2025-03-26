@@ -313,7 +313,7 @@ const Navbar = () => {
             style={{
               display: 'flex',
               justifyContent: 'flex-end',
-              padding: '1rem 2rem', // Espaçamento maior no rodapé
+              padding: '1rem 2rem',
             }}
           >
             <Button
@@ -321,7 +321,7 @@ const Navbar = () => {
               variant="outlined"
               color="primary"
               style={{
-                padding: '0.5rem 1.5rem', // Botão maior
+                padding: '0.5rem 1.5rem',
                 fontWeight: 'bold',
               }}
             >
