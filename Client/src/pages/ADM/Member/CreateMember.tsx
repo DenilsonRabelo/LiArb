@@ -20,7 +20,7 @@ const CreateMember: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:3000/membros", {
+            const response = await fetch(`${process.env.URL}/membros`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

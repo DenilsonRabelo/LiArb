@@ -17,7 +17,7 @@ export default function PostPage() {
 
   useEffect(() => {
     const fetchPost = async () => {
-      await fetch(`http://localhost:3000/post/buscar/por-id/${id}`)
+      await fetch(`${process.env.URL}/post/buscar/por-id/${id}`)
         .then((response) => response.json())
         .then((data) => setPost(data))
         .catch((error) => console.error('Failed to fetch post:', error));

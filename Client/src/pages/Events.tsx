@@ -22,7 +22,7 @@ const EventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${process.env.URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setEvents(data.events);

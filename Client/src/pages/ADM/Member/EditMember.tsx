@@ -18,7 +18,7 @@ const EditMember: React.FC = () => {
     useEffect(() => {
         const fetchMember = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/membros/${id}`, {
+                const response = await fetch(`${process.env.URL}/membros/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -48,7 +48,7 @@ const EditMember: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:3000/membros/${id}`, {
+            const response = await fetch(`${process.env.URL}/membros/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

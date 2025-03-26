@@ -41,7 +41,7 @@ const EditDeleteEventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${process.env.URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 setEvents(data.events);
                 setTotalPages(data.totalPages);
@@ -63,7 +63,7 @@ const EditDeleteEventsPage = () => {
 
     const handleDelete = async (eventId: number) => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/deletar/${eventId}`, {
+                const response = await fetch(`${process.env.URL}/evento/deletar/${eventId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

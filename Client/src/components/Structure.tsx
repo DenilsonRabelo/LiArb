@@ -29,7 +29,7 @@ const Structure = () => {
   useEffect(() => {
     const fetchmembros = async () => {
       try {
-        const response = await fetch('http://localhost:3000/membros');
+        const response = await fetch(`${process.env.URL}/membros`);
         const data = await response.json();
         setmembros(data);
       } catch (error) {

@@ -2,7 +2,7 @@ export const TOKEN_KEY = "auth_token";
 
 export const login = async (email: string, password: string): Promise<{ success: boolean; message: string }> => {
     try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch(`${process.env.URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

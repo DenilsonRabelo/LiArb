@@ -26,7 +26,7 @@ export default function ResponsiveGrid() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/post/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${process.env.URL}/post/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);

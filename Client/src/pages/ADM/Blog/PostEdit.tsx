@@ -32,7 +32,7 @@ const PostEditPage: React.FC = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/post/buscar/por-id/${id}`, {
+                const response = await fetch(`${process.env.URL}/post/buscar/por-id/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -95,7 +95,7 @@ const PostEditPage: React.FC = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:3000/post/editar/${id}`, {
+            const response = await fetch(`${process.env.URL}/post/editar/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

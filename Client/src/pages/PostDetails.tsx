@@ -23,7 +23,7 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/post/buscar/por-id/${id}`);
+        const response = await fetch(`${process.env.URL}/post/buscar/por-id/${id}`);
         if (!response.ok) {
           throw new Error('Post not found');
         }

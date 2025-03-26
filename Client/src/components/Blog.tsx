@@ -23,7 +23,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/post/buscar/paginado/1/3`);
+        const response = await fetch(`${process.env.URL}/post/buscar/paginado/1/3`);
         const data = await response.json();
         setPosts(data.posts);
       } catch (error) {

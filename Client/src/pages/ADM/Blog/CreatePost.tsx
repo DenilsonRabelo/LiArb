@@ -60,7 +60,7 @@ const BlogAdminCreatPost: React.FC = () => {
                 return;
             }
 
-            await fetch("http://localhost:3000/post/criar", {
+            await fetch(`${process.env.URL}/post/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
