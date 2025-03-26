@@ -13,5 +13,9 @@ export class CreateMembroDto {
 
   @IsOptional()
   @IsString()
+  descricao?: string;
+
+  @IsOptional()
+  @IsString()
   fotoUrl?: string;
 }

@@ -1,46 +1,66 @@
-import { Outlet } from 'react-router';
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
-import SchoolIcon from '@mui/icons-material/School';
-import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
-import GroupIcon from '@mui/icons-material/Group';
-import HomeIcon from '@mui/icons-material/Home';
-import { ReactRouterAppProvider } from '@toolpad/core/react-router';
-import type { Navigation } from '@toolpad/core/AppProvider';
 
-const NAVIGATION: Navigation = [
-  {
-    segment: 'home',
-    title: 'Home',
-    icon: <HomeIcon />,
-  },
-  {
-    segment: 'liga',
-    title: 'Liga',
-    icon: <HistoryEduIcon />,
-  },
-  {
-    segment: 'estrutura',
-    title: 'Estrutura',
-    icon: <GroupIcon />,
-  },
-  {
-    segment: 'competicoes',
-    title: 'Competições',
-    icon: <MilitaryTechIcon />,
-  },
-  {
-    segment: 'liArb-academy',
-    title: 'LiArb academy',
-    icon: <SchoolIcon />,
-  },
-];
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import BlogPage from "./pages/Blog";
+import PostDetails from "./pages/PostDetails";
+import LoginPage from "./pages/Login";
+import { SnackbarProvider } from "notistack";
+import AdmPage from "./pages/ADM/Adm";
+import BlogAdminCreatPost from "./pages/ADM/Blog/CreatePost";
+import EditPostPage from "./pages/ADM/Blog/PostEdit";
+import PostPage from "./pages/ADM/Blog/Post";
+import CreateEvent from "./pages/ADM/Event/CreateEvent";
+import EventsPage from "./pages/Events";
+import EditDeleteEventsPage from "./pages/ADM/Event/Event";
+import EditEvent from "./pages/ADM/Event/EditEvent";
+import CreateMember from "./pages/ADM/Member/CreateMember";
+import EditDeleteMembers from "./pages/ADM/Member/Member";
+import EditMember from "./pages/ADM/Member/EditMember";
+import { isAuthenticated } from "../src/services/login";
+
+const queryClient = new QueryClient();
 
 
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <SnackbarProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/login" element={<LoginPage />} />
 
-export default function App() {
-  return (
-    <ReactRouterAppProvider navigation={NAVIGATION} >
-      <Outlet />
-    </ReactRouterAppProvider>
-  );
-}
+            (// Rotas ADM)
+            {isAuthenticated() && (
+              <>
+                <Route path="/admin" element={<AdmPage />} />
+                <Route path="/post/criar" element={<BlogAdminCreatPost />} />
+                <Route path="/post/editar" element={<PostPage />} />
+                <Route path="/post/editar/:id" element={<EditPostPage />} />
+                <Route path="/evento/criar" element={<CreateEvent />} />
+                <Route path="/eventos" element={<EventsPage />} />
+                <Route path="/evento/editar" element={<EditDeleteEventsPage />} />
+                <Route path="/evento/editar/:id" element={<EditEvent />} />
+                <Route path="/membro/criar" element={<CreateMember />} />
+                <Route path="/membro/editar" element={<EditDeleteMembers />} />
+                <Route path="/membro/editar/:id" element={<EditMember />} />
+              </>
+            )}
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </SnackbarProvider>
+  </QueryClientProvider>
+);
+
+export default App;

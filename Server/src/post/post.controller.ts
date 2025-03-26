@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, ParseIntPipe, Patch, Post, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreatePost } from './dto/create-post-dto';
 import { postService } from "./post.service";
@@ -40,5 +40,10 @@ export class postController {
     buscarPostPorAutor(@Body('author') author: string) {
         console.log(author);
         return this.postService.findPostByAuthor(author);
+    }
+
+    @Patch('editar/:id')
+    editarPost(@Param('id', ParseIntPipe) id: number, @Body() post: CreatePost) {
+        return this.postService.updatePost(id, post);
     }
 }
