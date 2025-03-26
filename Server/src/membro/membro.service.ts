@@ -23,6 +23,7 @@ export class MembroService {
         data: {
           nome: createMembroDto.nome,
           email: createMembroDto.email,
+          descricao: createMembroDto.descricao,
           cargo: createMembroDto.cargo,
           fotoUrl: createMembroDto.fotoUrl,
         },

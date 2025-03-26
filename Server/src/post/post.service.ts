@@ -36,13 +36,10 @@ export class postService {
           published: 'desc'
         }
       });
-      
+
       const totalPosts = await this.prisma.post.count();
       const totalPages = Math.ceil(totalPosts / perPage);
 
-      if (posts.length === 0) {
-        return { statusCode: HttpStatus.NOT_FOUND, message: 'Nenhum post encontrado' };
-      }
       return { posts, totalPages };
     } catch (error) {
       return {
@@ -61,7 +58,7 @@ export class postService {
         }
       });
 
-      return post || { statusCode: HttpStatus.NOT_FOUND, message: 'Nenhum post encontrado' };
+      return post
     } catch (error) {
       return { statusCode: HttpStatus.INTERNAL_SERVER_ERROR, message: 'Erro ao buscar post! ' + error };
     }
@@ -96,6 +93,31 @@ export class postService {
       return { statusCode: HttpStatus.OK, message: 'Post deletado com sucesso!' };
     } catch (error) {
       return { statusCode: HttpStatus.INTERNAL_SERVER_ERROR, message: 'Erro ao deletar post! ' + error };
+    }
+  }
+
+  async updatePost(id: number, data: CreatePost) {
+    try {
+      const post = await this.prisma.post.update({
+        where: {
+          id: id
+        },
+        data: {
+          content: data.content,
+          image: data.image,
+          published: data.published,
+          subtitle: data.subtitle,
+          tags: data.tags.map(tag => tag.toString()),
+          title: data.title,
+          author: data.author
+        }
+
+
+      });
+
+      return { statusCode: HttpStatus.OK, message: 'Post atualizado com sucesso!' };
+    } catch (error) {
+      return { statusCode: HttpStatus.INTERNAL_SERVER_ERROR, message: 'Erro ao atualizar post! ' + error };
     }
   }
 

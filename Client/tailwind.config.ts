@@ -65,12 +65,12 @@ export default {
 				},
 				// Custom colors for LiArb
 				liarb: {
-					blue: {
+					purple: {
 						DEFAULT: '#00B0FF',
 						light: '#80D8FF',
 						dark: '#0091EA',
 					},
-					purple: {
+					blue: {
 						DEFAULT: '#9C27B0',
 						light: '#CE93D8',
 						dark: '#6A1B9A',

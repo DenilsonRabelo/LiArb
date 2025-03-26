@@ -29,11 +29,23 @@ model Post {
   @@map("posts")
 }
 
+
+model events {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  date DateTime
+  location String
+  @@map("events")
+}
+
+
 model Membro {
   id        Int      @id @default(autoincrement())
   nome      String
   email     String   @unique
   cargo     String?
+  descricao String?
   fotoUrl   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

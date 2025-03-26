@@ -8,9 +8,10 @@ import { APP_GUARD } from '@nestjs/core';
 import { postModule } from './post/post.module';
 import { AppService } from './app.service';
 import { MembroModule } from './membro/membro.module';
+import { eventModule } from './event/event.module';
 
 @Module({
-  imports: [usuarioModule, AuthModule, postModule, MembroModule],
+  imports: [usuarioModule, AuthModule, postModule, MembroModule, eventModule],
   controllers: [AppController],
   providers: [PrismaService, AppService],
 })

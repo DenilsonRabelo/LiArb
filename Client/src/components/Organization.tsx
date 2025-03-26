@@ -10,7 +10,7 @@ const Organization = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Como é organizado</h2>
-            <div className="w-20 h-1 bg-blue-gradient mx-auto rounded-full mb-6"></div>
+            <div className="w-20 h-1 bg-purple-gradient mx-auto rounded-full mb-6"></div>
             <p className="text-foreground/70 max-w-2xl mx-auto">
               Conheça a organização da Liga de Arbitragem e entenda como trabalhamos para 
               promover a excelência no esporte acadêmico.

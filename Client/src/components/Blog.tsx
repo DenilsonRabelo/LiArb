@@ -49,7 +49,7 @@ const Blog = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Blog</h2>
-            <div className="w-20 h-1 bg-blue-gradient mx-auto rounded-full mb-6"></div>
+            <div className="w-20 h-1 bg-purple-gradient mx-auto rounded-full mb-6"></div>
             <p className="text-foreground/70 max-w-2xl mx-auto">
               Artigos, notícias e atualizações sobre o mundo da arbitragem, mediação e resolução alternativa de conflitos.
             </p>
@@ -60,7 +60,7 @@ const Blog = () => {
           {posts.map((article, index) => (
             <AnimatedSection key={index} delay={index * 100}>
               <Card
-                className="h-full overflow-hidden"
+                className="h-full overflow-hidden cursor-pointer"
                 hoverEffect={true}
               >
                 <div className="h-48 -mx-6 -mt-6 mb-6">
@@ -74,7 +74,7 @@ const Blog = () => {
                 <h3 className="text-xl font-bold mt-2 mb-3">{article.title}</h3>
                 <p className="text-foreground/70 text-sm mb-4">{article.subtitle}</p>
                 <a
-                  href="#"
+                  href={`/post/${article.id}`}
                   className="inline-block text-liarb-blue font-medium hover:text-liarb-blue-dark transition-colors"
                 >
                   Leia mais

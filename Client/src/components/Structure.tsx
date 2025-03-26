@@ -1,12 +1,21 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from './Card';
 import AnimatedSection from './AnimatedSection';
 
+type MemberData = {
+  id: number;
+  nome: string;
+  cargo: string;
+  descricao: string;
+  fotoUrl: string;
+}
+
+
 const StructureCard = ({ title, description, index }: { title: string; description: string; index: number }) => (
   <AnimatedSection delay={index * 100} className="h-full">
-    <Card 
-      className="h-full bg-blue-gradient text-white hover:shadow-lg hover:shadow-liarb-blue/20"
+    <Card
+      className="h-full bg-purple-gradient text-white hover:shadow-lg hover:shadow-liarb-blue/20"
     >
       <h3 className="text-xl font-bold mb-3">{title}</h3>
       <p className="text-white/90 text-sm">{description}</p>
@@ -15,6 +24,23 @@ const StructureCard = ({ title, description, index }: { title: string; descripti
 );
 
 const Structure = () => {
+  const [membros, setmembros] = React.useState<MemberData[]>([]);
+
+  useEffect(() => {
+    const fetchmembros = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/membros');
+        const data = await response.json();
+        setmembros(data);
+      } catch (error) {
+        console.error('Erro ao buscar membros:', error);
+      }
+    };
+    fetchmembros();
+  }, []);
+
+
+
   const structures = [
     {
       title: "Diretoria",
@@ -36,16 +62,16 @@ const Structure = () => {
         <AnimatedSection>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Estrutura</h2>
-            <div className="w-20 h-1 bg-blue-gradient mx-auto rounded-full mb-6"></div>
+            <div className="w-20 h-1 bg-purple-gradient mx-auto rounded-full mb-6"></div>
             <p className="text-foreground/70 max-w-2xl mx-auto">
               Nossa estrutura organizacional é projetada para garantir eficiência e excelência em todas as nossas atividades.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 cursor-pointer">
           {structures.map((structure, index) => (
-            <StructureCard 
+            <StructureCard
               key={index}
               title={structure.title}
               description={structure.description}
@@ -60,20 +86,32 @@ const Structure = () => {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item, index) => (
-              <AnimatedSection key={index} delay={index * 100}>
-                <Card className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 bg-gray-200 rounded-full mb-4 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-200"></div>
-                  </div>
-                  <h4 className="text-lg font-bold">Nome do Membro {item}</h4>
-                  <p className="text-liarb-blue text-sm font-medium mb-2">Cargo na Diretoria</p>
-                  <p className="text-foreground/70 text-sm">
-                    Breve descrição sobre a experiência e responsabilidades deste membro dentro da liga.
-                  </p>
-                </Card>
-              </AnimatedSection>
-            ))}
+            {(membros || []).length > 0 ? (
+              membros.map((member, index) => (
+                <AnimatedSection key={member.id} delay={index * 100}>
+                  <Card className="flex flex-col items-center text-center cursor-pointer">
+                    <div className="w-24 h-24 bg-gray-200 rounded-full mb-4 overflow-hidden">
+                      {member.fotoUrl ? (
+                        <img
+                          src={member.fotoUrl}
+                          alt={member.nome}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-200"></div>
+                      )}
+                    </div>
+                    <h4 className="text-lg font-bold">{member.nome}</h4>
+                    <p className="text-liarb-blue text-sm font-medium mb-2">{member.cargo}</p>
+                    <p className="text-foreground/70 text-sm">{member.descricao}</p>
+                  </Card>
+                </AnimatedSection>
+              ))
+            ) : (
+              <p className="text-center text-foreground/70 col-span-full">
+                Nenhum membro encontrado.
+              </p>
+            )}
           </div>
         </div>
       </div>

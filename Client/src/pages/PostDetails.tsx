@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Typography } from '@mui/material';
 
 type Post = {
   id: number;
@@ -61,7 +62,17 @@ const PostDetails = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed">{post.content}</p>
+            <Typography
+              variant="body1"
+              className="text-lg text-gray-700 leading-relaxed"
+              sx={{
+                lineHeight: 1.8,
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                maxWidth: '100%',
+              }}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
             <div className="mt-6">
             <hr className="border-t border-gray-300 my-3" />
               <h3 className="text-xl font-semibold mb-2">Tags:</h3>

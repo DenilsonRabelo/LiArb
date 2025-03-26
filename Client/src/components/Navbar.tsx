@@ -274,33 +274,35 @@ const Navbar = () => {
 
         {/* Modal (Reused) */}
         <Dialog open={modalOpen} onClose={() => setModalOpen(false)} fullWidth maxWidth="sm">
-          <Typography variant="h6" align="center" sx={{ mt: 2 }}>
-            Menu do Usuário
-          </Typography>
+          <DialogTitle>
+            <Typography variant="h5" align="center" sx={{ fontWeight: 'bold', mt: 2 }}>
+              Menu do Usuário
+            </Typography>
+          </DialogTitle>
           <DialogContent
             style={{
-              display: "flex",
+              display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              gap: "1rem",
-              alignItems: "center",
-              justifyContent: "center",
-              maxHeight: "calc(100vh - 200px)",
+              gap: '1.5rem', // Maior espaçamento entre os botões
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '2rem', // Espaçamento interno maior
             }}
           >
             <a
-              className="px-6 py-3 rounded-lg bg-liarb-blue text-white font-medium shadow-lg shadow-liarb-blue/20 hover:shadow-xl hover:shadow-liarb-blue/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="px-8 py-3 rounded-lg bg-liarb-blue text-white font-medium shadow-lg shadow-liarb-blue/20 hover:shadow-xl hover:shadow-liarb-blue/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
               onClick={() => {
                 setModalOpen(false);
-                window.location.href = "/admin";
+                window.location.href = '/admin';
               }}
             >
-              Pagina do Admin
+              Página do Admin
             </a>
             <a
-              className="px-6 py-3 rounded-lg bg-white border border-gray-200 text-foreground font-medium hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="px-8 py-3 rounded-lg bg-white border border-gray-200 text-foreground font-medium hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
               onClick={() => {
                 logout();
-                window.location.href = "/";
+                window.location.href = '/';
                 setModalOpen(false);
               }}
             >
@@ -309,12 +311,20 @@ const Navbar = () => {
           </DialogContent>
           <div
             style={{
-              display: "flex",
-              justifyContent: "end",
-              padding: "1rem",
+              display: 'flex',
+              justifyContent: 'flex-end',
+              padding: '1rem 2rem', // Espaçamento maior no rodapé
             }}
           >
-            <Button onClick={() => setModalOpen(false)} color="primary">
+            <Button
+              onClick={() => setModalOpen(false)}
+              variant="outlined"
+              color="primary"
+              style={{
+                padding: '0.5rem 1.5rem', // Botão maior
+                fontWeight: 'bold',
+              }}
+            >
               Fechar
             </Button>
           </div>
