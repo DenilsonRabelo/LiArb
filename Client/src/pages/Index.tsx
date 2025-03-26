@@ -9,6 +9,8 @@ import Academy from '@/components/Academy';
 import Blog from '@/components/Blog';
 import Footer from '@/components/Footer';
 
+
+
 const Index = () => {
   return (
     <div className="min-h-screen w-full">

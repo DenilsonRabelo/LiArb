@@ -11,6 +11,8 @@ export class postService {
       await this.prisma.post.create({
         data: {
           title: data.title,
+          image: data.image,
+          subtitle: data.subtitle,
           content: data.content,
           published: data.published,
           author: data.author,

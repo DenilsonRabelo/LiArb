@@ -1,7 +1,27 @@
 
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleLinkClick = (href: string) => {
+    if (location.pathname !== '/') {
+      
+      navigate(`/${href}`, { replace: false });
+      setTimeout(() => {
+        const section = document.querySelector(href);
+        section?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const section = document.querySelector(href);
+      section?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -45,12 +65,12 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Início</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Conhecendo a Liga</a></li>
-              <li><a href="#structure" className="text-gray-400 hover:text-white transition-colors">Estrutura</a></li>
-              <li><a href="#competitions" className="text-gray-400 hover:text-white transition-colors">Competições</a></li>
-              <li><a href="#academy" className="text-gray-400 hover:text-white transition-colors">LiArb Academy</a></li>
-              <li><a href="#blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+              <li><a onClick={() => handleLinkClick('#home')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Início</a></li>
+              <li><a onClick={() => handleLinkClick('#about')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Conhecendo a Liga</a></li>
+              <li><a onClick={() => handleLinkClick('#structure')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Estrutura</a></li>
+              <li><a onClick={() => handleLinkClick('#competitions')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Competições</a></li>
+              <li><a onClick={() => handleLinkClick('#academy')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">LiArb Academy</a></li>
+              <li><a onClick={() => handleLinkClick('#blog')} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Blog</a></li>
             </ul>
           </div>
           
