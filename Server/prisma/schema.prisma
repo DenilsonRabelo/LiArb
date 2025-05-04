@@ -8,37 +8,36 @@ datasource db {
 }
 
 model Usuario {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
   password String
 
   @@map("usuarios")
 }
 
 model Post {
-  id Int @id @default(autoincrement())
-  title String
-  content String
-  subtitle String
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  subtitle  String
   published DateTime
-  image String
-  author String
-  tags String[]
+  image     String
+  author    String
+  tags      String[]
 
   @@map("posts")
 }
 
-
 model events {
-  id Int @id @default(autoincrement())
-  title String
+  id          Int      @id @default(autoincrement())
+  title       String
   description String
-  date DateTime
-  location String
+  date        DateTime
+  location    String
+
   @@map("events")
 }
-
 
 model Membro {
   id        Int      @id @default(autoincrement())
@@ -51,4 +50,34 @@ model Membro {
   updatedAt DateTime @updatedAt
 
   @@map("membros")
+}
+
+model competicao {
+  id         Int      @id @default(autoincrement())
+  nome       String
+  descricao  String?
+  dataInicio DateTime
+  dataFim    DateTime
+  local      String?
+  premio     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  colocacao  colocacao[]
+
+
+  @@map("competicoes")
+}
+
+model colocacao {
+  id            Int      @id @default(autoincrement())
+  competicaoId  Int
+  posicao       Int
+  ano          Int
+  data         DateTime
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  competicao    competicao @relation(fields: [competicaoId], references: [id])
+
+  @@map("colocacoes")
 }

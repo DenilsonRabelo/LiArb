@@ -9,9 +9,10 @@ import { postModule } from './post/post.module';
 import { AppService } from './app.service';
 import { MembroModule } from './membro/membro.module';
 import { eventModule } from './event/event.module';
+import { CompeticaoModule } from './competicao/competicao.module';
 
 @Module({
-  imports: [usuarioModule, AuthModule, postModule, MembroModule, eventModule],
+  imports: [usuarioModule, AuthModule, postModule, MembroModule, eventModule, CompeticaoModule],
   controllers: [AppController],
   providers: [PrismaService, AppService],
 })
