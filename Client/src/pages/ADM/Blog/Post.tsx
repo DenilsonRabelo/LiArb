@@ -17,6 +17,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import { URL } from '../../../../constants';
 
 
 type Post = {
@@ -43,7 +44,7 @@ const PostPage = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/post/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${URL}/post/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);
@@ -82,7 +83,7 @@ const PostPage = () => {
 
     const handleDeletePost = async (postId: number) => {
         try {
-            const response = await fetch(`http://localhost:3000/post/deletar/${postId}`, {
+            const response = await fetch(`${URL}/post/deletar/${postId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${getToken()}`,

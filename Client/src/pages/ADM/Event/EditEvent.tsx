@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { URL } from "../../../../constants";
 
 const EditEvent: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -23,7 +24,7 @@ const EditEvent: React.FC = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/buscar/${id}`, {
+                const response = await fetch(`${URL}/evento/buscar/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -53,7 +54,7 @@ const EditEvent: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:3000/evento/editar/${id}`, {
+            const response = await fetch(`${URL}/evento/editar/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

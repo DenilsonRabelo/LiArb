@@ -10,6 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { enqueueSnackbar } from 'notistack';
 import { getToken } from '@/services/login';
+import { URL } from '../../../../constants';
 
 type Event = {
     id: number;
@@ -41,7 +42,7 @@ const EditDeleteEventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 setEvents(data.events);
                 setTotalPages(data.totalPages);
@@ -63,7 +64,7 @@ const EditDeleteEventsPage = () => {
 
     const handleDelete = async (eventId: number) => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/deletar/${eventId}`, {
+                const response = await fetch(`${URL}/evento/deletar/${eventId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

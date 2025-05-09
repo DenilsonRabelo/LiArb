@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { URL } from "../../../../constants";
 
 const CreateMember: React.FC = () => {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const CreateMember: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:3000/membros", {
+            const response = await fetch(`${URL}/membros`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

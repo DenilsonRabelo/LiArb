@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import Card from './Card';
 import AnimatedSection from './AnimatedSection';
+import {URL} from '../../constants'
 
 type MemberData = {
   id: number;
@@ -29,7 +30,7 @@ const Structure = () => {
   useEffect(() => {
     const fetchmembros = async () => {
       try {
-        const response = await fetch('http://localhost:3000/membros');
+        const response = await fetch(`${URL}/membros`);
         const data = await response.json();
         setmembros(data);
       } catch (error) {

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { URL } from "../../../../constants";
 
 const EditMember: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Pega o ID do membro da URL
@@ -18,7 +19,7 @@ const EditMember: React.FC = () => {
     useEffect(() => {
         const fetchMember = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/membros/${id}`, {
+                const response = await fetch(`${URL}/membros/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -48,7 +49,7 @@ const EditMember: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:3000/membros/${id}`, {
+            const response = await fetch(`${URL}/membros/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import AnimatedSection from './AnimatedSection';
+import {URL} from '../../constants'
 
 type Event = {
   id: number;
@@ -18,7 +19,7 @@ const Academy = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/evento/buscar/paginado/1/5`);
+        const response = await fetch(`${URL}/evento/buscar/paginado/1/5`);
         const data = await response.json();
         setEvents(data.events);
       } catch (error) {

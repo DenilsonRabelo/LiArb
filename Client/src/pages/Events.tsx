@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { URL } from '../../constants';
 
 type Event = {
     id: number;
@@ -22,7 +23,7 @@ const EventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setEvents(data.events);

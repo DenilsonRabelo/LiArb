@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { URL } from "../../../../constants";
 
 type MemberData = {
   id: number;
@@ -25,7 +26,7 @@ const EditDeleteMembers: React.FC = () => {
   useEffect(() => {
     const fetchMembros = async () => {
       try {
-        const response = await fetch("http://localhost:3000/membros", {
+        const response = await fetch(`${URL}/membros`, {
           headers: {
             Authorization: `Bearer ${getToken()}`,
           },
@@ -57,7 +58,7 @@ const EditDeleteMembers: React.FC = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/membros/${id}`, {
+      const response = await fetch(`${URL}/membros/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${getToken()}`,

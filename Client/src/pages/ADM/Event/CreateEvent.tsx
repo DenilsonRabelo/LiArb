@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { URL } from "../../../../constants";
 
 const CreateEvent: React.FC = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const CreateEvent: React.FC = () => {
             return;
         }
         try {
-            await fetch("http://localhost:3000/evento/criar", {
+            await fetch(`${URL}/evento/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

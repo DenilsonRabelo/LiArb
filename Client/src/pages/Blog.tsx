@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { URL } from '../../constants';
 
 
 type Post = {
@@ -29,7 +30,7 @@ const BlogPage = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/post/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${URL}/post/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);

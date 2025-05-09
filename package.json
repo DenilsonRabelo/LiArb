@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "concurrently": "^9.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17"
   }
 }
