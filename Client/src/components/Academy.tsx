@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import AnimatedSection from './AnimatedSection';
 import { config } from '../config/env';
+import { Link } from 'react-router-dom';
 
 type Event = {
   id: number;
@@ -140,12 +141,12 @@ const Academy = () => {
 
         <AnimatedSection delay={300} className="mt-12 text-center">
           <h4 className="text-xl font-medium mb-6">Histórico dos eventos mais recentes organizados</h4>
-          <a 
-            href="/eventos" 
+          <Link 
+            to="/eventos" 
             className="inline-block px-8 py-3 rounded-lg bg-liarb-blue text-white font-medium shadow-lg shadow-liarb-blue/20 hover:shadow-xl hover:shadow-liarb-blue/30 hover:-translate-y-1 transition-all duration-300"
           >
             Ver todos os eventos
-          </a>
+          </Link>
         </AnimatedSection>
       </div>
     </section>

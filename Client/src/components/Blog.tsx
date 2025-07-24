@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import AnimatedSection from './AnimatedSection';
 import Card from './Card';
 import { config } from '../config/env';
+import { Link } from 'react-router-dom';
 
 
 type Post = {
@@ -86,13 +87,12 @@ const Blog = () => {
         </div>
 
         <AnimatedSection delay={300} className="mt-12 text-center">
-          <a
-            onClick={() => window.location.href = '/blog'}
-            href="#"
+          <Link
+            to="/blog"
             className="inline-block px-8 py-3 rounded-lg border border-liarb-blue text-liarb-blue font-medium hover:bg-liarb-blue hover:text-white transition-all duration-300"
           >
             Ver todos os artigos
-          </a>
+          </Link>
         </AnimatedSection>
       </div>
     </section>

@@ -47,8 +47,9 @@ const App = () => (
             <Route path="/competicoes/camagro" element={<CamagroPage />} />
             <Route path="/competicoes/vis-moot" element={<VisMootPage />} />
             <Route path="/liarb-academy" element={<LiarbAcademyPage />} />
+            <Route path="/eventos" element={<EventsPage />} />
 
-            (// Rotas ADM)
+            {/* Rotas ADM */}
             {isAuthenticated() && (
               <>
                 <Route path="/admin" element={<AdmPage />} />
@@ -56,7 +57,6 @@ const App = () => (
                 <Route path="/post/editar" element={<PostPage />} />
                 <Route path="/post/editar/:id" element={<EditPostPage />} />
                 <Route path="/evento/criar" element={<CreateEvent />} />
-                <Route path="/eventos" element={<EventsPage />} />
                 <Route path="/evento/editar" element={<EditDeleteEventsPage />} />
                 <Route path="/evento/editar/:id" element={<EditEvent />} />
                 <Route path="/membro/criar" element={<CreateMember />} />
