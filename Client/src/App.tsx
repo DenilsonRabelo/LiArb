@@ -21,6 +21,10 @@ import EditEvent from "./pages/ADM/Event/EditEvent";
 import CreateMember from "./pages/ADM/Member/CreateMember";
 import EditDeleteMembers from "./pages/ADM/Member/Member";
 import EditMember from "./pages/ADM/Member/EditMember";
+import CamarbPage from "./pages/Competitions/Camarb";
+import CamagroPage from "./pages/Competitions/Camagro";
+import VisMootPage from "./pages/Competitions/VisMoot";
+import LiarbAcademyPage from "./pages/Academy/LiarbAcademy";
 import { isAuthenticated } from "../src/services/login";
 
 const queryClient = new QueryClient();
@@ -39,6 +43,10 @@ const App = () => (
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/post/:id" element={<PostDetails />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/competicoes/camarb" element={<CamarbPage />} />
+            <Route path="/competicoes/camagro" element={<CamagroPage />} />
+            <Route path="/competicoes/vis-moot" element={<VisMootPage />} />
+            <Route path="/liarb-academy" element={<LiarbAcademyPage />} />
 
             (// Rotas ADM)
             {isAuthenticated() && (

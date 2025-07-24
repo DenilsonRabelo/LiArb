@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { config } from '../config/env';
 import AnimatedSection from '../components/AnimatedSection';
 import Card from '../components/Card';
 import Box from '@mui/material/Box';
@@ -22,7 +23,7 @@ const EventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${config.URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setEvents(data.events);

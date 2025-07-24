@@ -25,7 +25,7 @@ const CreateEvent: React.FC = () => {
             return;
         }
         try {
-            await fetch(`${process.env.URL}/evento/criar`, {
+            await fetch(`${config.URL}/evento/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

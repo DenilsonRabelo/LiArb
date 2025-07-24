@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Divider, Chip } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { config } from '../../config/env';
 import './style.css';
 
 interface PostPageProps {
@@ -17,7 +18,7 @@ export default function PostPage() {
 
   useEffect(() => {
     const fetchPost = async () => {
-      await fetch(`${process.env.URL}/post/buscar/por-id/${id}`)
+      await fetch(`${config.URL}/post/buscar/por-id/${id}`)
         .then((response) => response.json())
         .then((data) => setPost(data))
         .catch((error) => console.error('Failed to fetch post:', error));

@@ -76,6 +76,11 @@ export default {
 						dark: '#6A1B9A',
 					},
 				},
+				'liarb-blue': {
+					DEFAULT: '#9C27B0',
+					light: '#CE93D8',
+					dark: '#6A1B9A',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

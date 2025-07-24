@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
 
 const Competitions = () => {
@@ -51,17 +52,20 @@ const Competitions = () => {
                 {
                   name: "CAMAGRO",
                   date: "Março - Maio",
-                  description: "Competição de Arbitragem em Agronegócio, focada em disputas do setor agrícola."
+                  description: "Competição de Arbitragem em Agronegócio, focada em disputas do setor agrícola.",
+                  link: "/competicoes/camagro"
                 },
                 {
                   name: "CAMARB",
                   date: "Junho - Agosto",
-                  description: "Competição de Arbitragem em Direito Comercial, abordando conflitos empresariais."
+                  description: "Competição de Arbitragem em Direito Comercial, abordando conflitos empresariais.",
+                  link: "/competicoes/camarb"
                 },
                 {
                   name: "VIS",
                   date: "Setembro - Novembro",
-                  description: "Vienna International Simulation, competição internacional de arbitragem comercial."
+                  description: "Vienna International Simulation, competição internacional de arbitragem comercial.",
+                  link: "/competicoes/vis-moot"
                 }
               ].map((competition, index) => (
                 <div 
@@ -73,28 +77,25 @@ const Competitions = () => {
                     <span className="px-3 py-1 bg-white/20 rounded-full text-xs">{competition.date}</span>
                   </div>
                   <p className="text-white/80 text-sm">{competition.description}</p>
-                  <a 
-                    href="#" 
-                    className="inline-block mt-4 text-white font-medium text-sm hover:underline"
-                  >
-                    Saiba mais
-                  </a>
+                  {competition.link === "#" ? (
+                    <span className="inline-block mt-4 text-white/60 font-medium text-sm">
+                      Em breve
+                    </span>
+                  ) : (
+                    <Link 
+                      to={competition.link}
+                      className="inline-block mt-4 text-white font-medium text-sm hover:underline"
+                    >
+                      Saiba mais
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
           </AnimatedSection>
         </div>
 
-        <AnimatedSection delay={200} className="mt-20">
-          <div className="text-center">
-            <a 
-              href="#" 
-              className="inline-block px-8 py-3 rounded-lg bg-white text-liarb-blue font-medium hover:bg-opacity-90 transition-all duration-300 shadow-xl"
-            >
-              Ver todas as competições
-            </a>
-          </div>
-        </AnimatedSection>
+        
       </div>
     </section>
   );

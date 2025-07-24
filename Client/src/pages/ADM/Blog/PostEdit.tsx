@@ -4,6 +4,7 @@ import "@blocknote/mantine/style.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { config } from "../../../config/env";
 import { getToken } from "../../../services/login";
 import { Box, Button, TextField, Chip, Typography } from "@mui/material";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -32,7 +33,7 @@ const PostEditPage: React.FC = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/post/buscar/por-id/${id}`, {
+                const response = await fetch(`${config.URL}/post/buscar/por-id/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -95,7 +96,7 @@ const PostEditPage: React.FC = () => {
                 return;
             }
 
-            const response = await fetch(`${process.env.URL}/post/editar/${id}`, {
+            const response = await fetch(`${config.URL}/post/editar/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

@@ -25,7 +25,7 @@ const EditDeleteMembers: React.FC = () => {
   useEffect(() => {
     const fetchMembros = async () => {
       try {
-        const response = await fetch(`${process.env.URL}/membros`, {
+        const response = await fetch(`${config.URL}/membros`, {
           headers: {
             Authorization: `Bearer ${getToken()}`,
           },
@@ -57,7 +57,7 @@ const EditDeleteMembers: React.FC = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      const response = await fetch(`${process.env.URL}/membros/${id}`, {
+      const response = await fetch(`${config.URL}/membros/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${getToken()}`,

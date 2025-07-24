@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { config } from '../config/env';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Typography } from '@mui/material';
@@ -23,7 +24,7 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`${process.env.URL}/post/buscar/por-id/${id}`);
+        const response = await fetch(`${config.URL}/post/buscar/por-id/${id}`);
         if (!response.ok) {
           throw new Error('Post not found');
         }

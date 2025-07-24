@@ -15,6 +15,7 @@ import { useSnackbar } from 'notistack';
 import Navbar from "@/components/Navbar";
 import { Section } from "lucide-react";
 import Footer from "@/components/Footer";
+import { config } from "../../../config/env";
 
 
 const BlogAdminCreatPost: React.FC = () => {
@@ -60,7 +61,7 @@ const BlogAdminCreatPost: React.FC = () => {
                 return;
             }
 
-            await fetch(`${process.env.URL}/post/criar`, {
+            await fetch(`${config.URL}/post/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

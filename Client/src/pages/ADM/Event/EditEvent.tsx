@@ -23,7 +23,7 @@ const EditEvent: React.FC = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/evento/buscar/${id}`, {
+                const response = await fetch(`${config.URL}/evento/buscar/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -53,7 +53,7 @@ const EditEvent: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`${process.env.URL}/evento/editar/${id}`, {
+            const response = await fetch(`${config.URL}/evento/editar/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

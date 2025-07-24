@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { config } from '../../../config/env';
 import AnimatedSection from '@/components/AnimatedSection';
 import Card from '@/components/Card';
 import Box from '@mui/material/Box';
@@ -41,7 +42,7 @@ const EditDeleteEventsPage = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/evento/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${config.URL}/evento/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 setEvents(data.events);
                 setTotalPages(data.totalPages);
@@ -63,7 +64,7 @@ const EditDeleteEventsPage = () => {
 
     const handleDelete = async (eventId: number) => {
             try {
-                const response = await fetch(`${process.env.URL}/evento/deletar/${eventId}`, {
+                const response = await fetch(`${config.URL}/evento/deletar/${eventId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

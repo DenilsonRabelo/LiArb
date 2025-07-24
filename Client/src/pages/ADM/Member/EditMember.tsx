@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, TextField } from "@mui/material";
+import { config } from "../../../config/env";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
@@ -18,7 +19,7 @@ const EditMember: React.FC = () => {
     useEffect(() => {
         const fetchMember = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/membros/${id}`, {
+                const response = await fetch(`${config.URL}/membros/${id}`, {
                     headers: {
                         Authorization: `Bearer ${getToken()}`,
                     },
@@ -48,7 +49,7 @@ const EditMember: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`${process.env.URL}/membros/${id}`, {
+            const response = await fetch(`${config.URL}/membros/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

@@ -1,8 +1,10 @@
+import { config } from '../config/env';
+
 export const TOKEN_KEY = "auth_token";
 
 export const login = async (email: string, password: string): Promise<{ success: boolean; message: string }> => {
     try {
-        const response = await fetch(`${process.env.URL}/login`, {
+        const response = await fetch(`${config.URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

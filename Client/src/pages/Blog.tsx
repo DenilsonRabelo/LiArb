@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { config } from '../config/env';
 import AnimatedSection from '../components/AnimatedSection';
 import Card from '../components/Card';
 import Box from '@mui/material/Box';
@@ -29,7 +30,7 @@ const BlogPage = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/post/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${config.URL}/post/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);

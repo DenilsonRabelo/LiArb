@@ -12,9 +12,10 @@ interface NavItemProps {
   href: string;
   label: string;
   active?: boolean;
+  darkTheme?: boolean;
 }
 
-const NavItem = ({ href, label, active = false }: NavItemProps) => {
+const NavItem = ({ href, label, active = false, darkTheme = false }: NavItemProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -37,21 +38,32 @@ const NavItem = ({ href, label, active = false }: NavItemProps) => {
         onClick={handleClick}
         className={cn(
           'flex items-center px-4 py-2 text-sm font-medium transition-all duration-300',
-          active
-            ? 'text-liarb-blue-dark'
-            : 'text-foreground/80 hover:text-liarb-blue'
+          darkTheme 
+            ? (active
+                ? 'text-white font-semibold'
+                : 'text-white/80 hover:text-white')
+            : (active
+                ? 'text-liarb-blue-dark'
+                : 'text-foreground/80 hover:text-liarb-blue')
         )}
       >
         {label}
         {active && (
-          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-liarb-blue-dark rounded-full animate-fade-in" />
+          <span className={cn(
+            "absolute bottom-0 left-0 w-full h-0.5 rounded-full animate-fade-in",
+            darkTheme ? "bg-white" : "bg-liarb-blue-dark"
+          )} />
         )}
       </button>
     </li>
   );
 };
 
-const Navbar = () => {
+interface NavbarProps {
+  darkTheme?: boolean;
+}
+
+const Navbar = ({ darkTheme = false }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -102,7 +114,9 @@ const Navbar = () => {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-2' : 'bg-transparent py-4'
+        darkTheme 
+          ? 'bg-transparent py-4'
+          : (scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-2' : 'bg-transparent py-4')
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -110,7 +124,12 @@ const Navbar = () => {
           <div className="h-10 w-10 bg-liarb-purple rounded-md mr-2 flex items-center justify-center">
             <span className="text-white font-bold text-lg">L</span>
           </div>
-          <span className="font-bold text-xl bg-clip-text text-transparent bg-dual-gradient">
+          <span className={cn(
+            "font-bold text-xl",
+            darkTheme 
+              ? "text-white" 
+              : "bg-clip-text text-transparent bg-dual-gradient"
+          )}>
             LiArb
           </span>
         </Link>
@@ -124,6 +143,7 @@ const Navbar = () => {
                 href={item.href}
                 label={item.label}
                 active={activeSection === item.href.substring(1)}
+                darkTheme={darkTheme}
               />
             ))}
 
@@ -188,7 +208,12 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="px-8 py-2 text-sm font-medium text-white bg-liarb-blue-dark rounded-full hover:bg-liarb-blue transition-all flex items-center"
+                className={cn(
+                  "px-8 py-2 text-sm font-medium rounded-full transition-all flex items-center",
+                  darkTheme 
+                    ? "text-liarb-blue bg-white hover:bg-gray-100"
+                    : "text-white bg-liarb-blue-dark hover:bg-liarb-blue"
+                )}
               >
                 Login
               </Link>
@@ -203,9 +228,9 @@ const Navbar = () => {
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileMenuOpen ? (
-            <X className="h-6 w-6 text-foreground" />
+            <X className={cn("h-6 w-6", darkTheme ? "text-white" : "text-foreground")} />
           ) : (
-            <Menu className="h-6 w-6 text-foreground" />
+            <Menu className={cn("h-6 w-6", darkTheme ? "text-white" : "text-foreground")} />
           )}
         </button>
 

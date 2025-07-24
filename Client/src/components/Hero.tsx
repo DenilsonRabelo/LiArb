@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="absolute left-0 top-1/4 w-64 h-64 bg-liarb-blue-light/20 rounded-tr-3xl rounded-bl-3xl rotate-12 animate-floating"></div>
       <div className="absolute right-0 bottom-1/4 w-48 h-48 bg-liarb-purple-light/10 rounded-tl-3xl rounded-br-3xl -rotate-12 animate-floating animation-delay-300"></div>
       
-      <div className="container mx-auto px-4 z-10">
+      <div className="w-full px-4 md:px-8 lg:px-12 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <AnimatedSection direction="left">
@@ -49,7 +49,9 @@ const Hero = () => {
                   Conheça a Liga
                 </a>
                 <a 
-                  href="#contact" 
+                  href="https://instagram.com/ligadearbitragem" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 rounded-lg bg-white border border-gray-200 text-foreground font-medium hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300"
                 >
                   Entre em contato

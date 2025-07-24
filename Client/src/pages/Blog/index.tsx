@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { config } from '../../config/env';
 import BlogCard from '../../components/Card';
 import PageTitle from '../../components/Tittle';
 import { Pagination, Typography } from '@mui/material';
@@ -26,7 +27,7 @@ export default function ResponsiveGrid() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`${process.env.URL}/post/buscar/paginado/${currentPage}/12`);
+                const response = await fetch(`${config.URL}/post/buscar/paginado/${currentPage}/12`);
                 const data = await response.json();
                 console.log(data);
                 setPosts(data.posts);

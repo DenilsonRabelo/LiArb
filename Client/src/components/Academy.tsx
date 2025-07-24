@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import AnimatedSection from './AnimatedSection';
+import { config } from '../config/env';
 
 type Event = {
   id: number;
@@ -18,7 +19,7 @@ const Academy = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`${process.env.URL}/evento/buscar/paginado/1/5`);
+        const response = await fetch(`${config.URL}/evento/buscar/paginado/1/5`);
         const data = await response.json();
         setEvents(data.events);
       } catch (error) {
@@ -54,37 +55,55 @@ const Academy = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">LiArb Academy</h2>
             <div className="w-20 h-1 bg-purple-gradient mx-auto rounded-full mb-6"></div>
-            <p className="text-foreground/70 max-w-2xl mx-auto">
-              Nossa academia oferece cursos, workshops e eventos para o desenvolvimento profissional 
-              em arbitragem e métodos alternativos de resolução de conflitos.
-            </p>
+            
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {courses.map((course, index) => (
-            <AnimatedSection key={index} delay={index * 100}>
-              <Card 
-                className="h-full border border-gray-100 hover:border-liarb-blue/20"
-                hoverEffect={true}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-foreground">{course.title}</h3>
-                  <span className="px-3 py-1 bg-liarb-blue-light/20 rounded-full text-liarb-blue text-xs font-medium">
-                    {course.duration}
-                  </span>
-                </div>
-                <p className="text-foreground/70 mb-4">{course.description}</p>
-                <a 
-                  href="#" 
-                  className="inline-block text-liarb-blue font-medium hover:text-liarb-blue-dark transition-colors"
-                >
-                  Ver detalhes
-                </a>
-              </Card>
-            </AnimatedSection>
-          ))}
+        {/* Boxes informativos */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <AnimatedSection delay={100}>
+            <Card className="h-full bg-gradient-to-br from-liarb-blue/5 to-liarb-purple/5 border-liarb-blue/20">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-liarb-blue mb-3">
+                  O braço acadêmico da Liga de Arbitragem da UFC
+                </h3>
+                <p className="text-foreground/80 leading-relaxed">
+                  A LiArb Academy é a extensão acadêmica da Liga de Arbitragem da Universidade Federal do Ceará. 
+                  Formada por ex-membros da Liga e apoiada por professores, profissionais e parceiros da área jurídica, 
+                  a Academy é o espaço dedicado à formação, pesquisa e difusão do conhecimento sobre arbitragem e 
+                  áreas correlatas do Direito.
+                </p>
+              </div>
+            </Card>
+          </AnimatedSection>
+
+          <AnimatedSection delay={200}>
+            <Card className="h-full bg-gradient-to-br from-liarb-purple/5 to-liarb-blue/5 border-liarb-purple/20">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-liarb-purple mb-3">
+                  Nossa missão
+                </h3>
+                <p className="text-foreground/80 leading-relaxed">
+                  Promover o aprofundamento acadêmico e o debate qualificado sobre arbitragem, Direito Empresarial 
+                  e Contratual, contribuindo para a construção de uma comunidade jurídica crítica, atualizada e 
+                  conectada com as demandas do mercado.
+                </p>
+              </div>
+            </Card>
+          </AnimatedSection>
         </div>
+
+        {/* Botão Saiba mais centralizado */}
+        <AnimatedSection delay={300} className="text-center mb-20">
+          <a 
+            href="/liarb-academy" 
+            className="inline-block px-8 py-4 rounded-lg bg-liarb-purple text-white font-medium shadow-lg shadow-liarb-purple/20 hover:shadow-xl hover:shadow-liarb-purple/30 hover:-translate-y-1 transition-all duration-300"
+          >
+            Saiba mais da LiArb Academy
+          </a>
+        </AnimatedSection>
+
+
 
         <AnimatedSection>
           <h3 className="text-2xl font-bold text-center mb-10">Eventos Recentes</h3>
