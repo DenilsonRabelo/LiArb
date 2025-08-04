@@ -15,7 +15,6 @@ type Post = {
   author: string;
   image: string;
   tags: string[];
-  navigate: any;
 };
 
 const Blog = () => {

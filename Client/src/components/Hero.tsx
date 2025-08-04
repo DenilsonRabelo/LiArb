@@ -60,26 +60,14 @@ const Hero = () => {
             </AnimatedSection>
           </div>
           
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="w-full lg:w-1/2 justify-center lg:justify-end hidden lg:flex">
             <AnimatedSection direction="right">
-              <div className="relative">
-                <div className="w-64 h-64 md:w-80 md:h-80 bg-liarb-purple rounded-tr-[30%] rounded-bl-[30%] rotate-12 shadow-xl"></div>
-                <div className="absolute inset-0 w-64 h-64 md:w-80 md:h-80 bg-liarb-blue rounded-tr-[30%] rounded-bl-[30%] rotate-6 shadow-xl"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg 
-                    viewBox="0 0 200 200" 
-                    width="180" 
-                    height="180" 
-                    className="drop-shadow-lg"
-                  >
-                    <path 
-                      fill="#FFFFFF" 
-                      d="M41.3,-52.9C53.3,-46.1,62.7,-33.2,68.2,-18.1C73.7,-3,75.3,14.4,69.2,28.8C63.1,43.2,49.3,54.8,34.1,61.9C18.9,69.1,2.3,72,-14.9,70.8C-32.1,69.6,-49.9,64.5,-59.7,52.3C-69.5,40.1,-71.3,21,-71.8,2.1C-72.3,-16.8,-71.5,-34.5,-62.2,-44.9C-52.9,-55.2,-35.1,-58.1,-20,-58.8C-4.9,-59.5,7.4,-57.9,19.9,-55.3C32.3,-52.7,44.9,-49.1,41.3,-52.9Z" 
-                      transform="translate(100 100) scale(0.8)" 
-                    />
-                  </svg>
-                  <span className="absolute text-white text-6xl font-bold">L</span>
-                </div>
+              <div className="flex items-center justify-center">
+                <img 
+                  src="/logo_liarb.png" 
+                  alt="LiArb Logo"
+                  className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 drop-shadow-lg object-contain"
+                />
               </div>
             </AnimatedSection>
           </div>
