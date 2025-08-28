@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { config } from "../../../config/env";
 
 const EditEvent: React.FC = () => {
     const { id } = useParams<{ id: string }>();
