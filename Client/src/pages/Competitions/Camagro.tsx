@@ -29,7 +29,7 @@ const CamagroPage = () => {
       year: '2023'
     },
     {
-      src: '/CAMAGRO/CAMAGRO/Prêmio de Equipe Destaque - VI CAMAGRO 2024 - Cescon Barrieu.png',
+      src: '/CAMAGRO/CAMAGRO/Prêmio de Equipe Destaque - VI CAMAGRO 2024 - Cescon Barrieu.jpeg',
       alt: '2024 VI CAMAGRO - Equipe Destaque',
       year: '2024'
     },

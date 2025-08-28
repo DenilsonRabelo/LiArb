@@ -8,6 +8,7 @@ import logo from '../components/assets/logo.png';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
+
 interface NavItemProps {
   href: string;
   label: string;
@@ -38,13 +39,13 @@ const NavItem = ({ href, label, active = false, darkTheme = false }: NavItemProp
         onClick={handleClick}
         className={cn(
           'flex items-center px-4 py-2 text-sm font-medium transition-all duration-300',
-          darkTheme 
+          darkTheme
             ? (active
-                ? 'text-white font-semibold'
-                : 'text-white/80 hover:text-white')
+              ? 'text-white font-semibold'
+              : 'text-white/80 hover:text-white')
             : (active
-                ? 'text-liarb-blue-dark'
-                : 'text-foreground/80 hover:text-liarb-blue')
+              ? 'text-liarb-blue-dark'
+              : 'text-foreground/80 hover:text-liarb-blue')
         )}
       >
         {label}
@@ -114,25 +115,21 @@ const Navbar = ({ darkTheme = false }: NavbarProps) => {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        darkTheme 
+        darkTheme
           ? 'bg-transparent py-4'
           : (scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-2' : 'bg-transparent py-4')
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link to={'/'} className="flex items-center">
-          <div className="h-10 w-10 bg-liarb-purple rounded-md mr-2 flex items-center justify-center">
-            <span className="text-white font-bold text-lg">L</span>
-          </div>
-          <span className={cn(
-            "font-bold text-xl",
-            darkTheme 
-              ? "text-white" 
-              : "bg-clip-text text-transparent bg-dual-gradient"
-          )}>
-            LiArb
-          </span>
-        </Link>
+      <Link to={'/'} className="flex items-center">
+        {/* Troquei o bloco anterior pela logo do LiArb */}
+        <img
+          src={logo}
+          alt="Logo LiArb"
+          className="h-10 w-auto mr-2"
+          style={{ maxHeight: 40 }}
+        />
+      </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
@@ -210,7 +207,7 @@ const Navbar = ({ darkTheme = false }: NavbarProps) => {
                 to="/login"
                 className={cn(
                   "px-8 py-2 text-sm font-medium rounded-full transition-all flex items-center",
-                  darkTheme 
+                  darkTheme
                     ? "text-liarb-blue bg-white hover:bg-gray-100"
                     : "text-white bg-liarb-blue-dark hover:bg-liarb-blue"
                 )}

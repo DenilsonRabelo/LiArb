@@ -15,11 +15,6 @@ const Hero = () => {
       <div className="w-full px-4 md:px-8 lg:px-12 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <AnimatedSection direction="left">
-              <div className="inline-block mb-2 px-4 py-1 rounded-full bg-liarb-blue/10 text-liarb-blue text-sm font-medium">
-                Liga de Arbitragem
-              </div>
-            </AnimatedSection>
             
             <AnimatedSection delay={100} direction="left">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
