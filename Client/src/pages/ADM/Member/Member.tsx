@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { useNavigate } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import { getToken } from "@/services/login";
+import { config } from "../../../config/env";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
 type MemberData = {
